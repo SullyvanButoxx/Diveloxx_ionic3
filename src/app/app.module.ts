@@ -16,6 +16,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore'
 
 // Pages
 import { RegisterPage } from '../pages/register/register'
+import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { RegisterPage } from '../pages/register/register'
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider
   ]
 })
 export class AppModule {}
