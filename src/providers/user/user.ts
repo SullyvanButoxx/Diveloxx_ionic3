@@ -9,6 +9,6 @@ export class UserProvider {
   }
 
   register(user: User) {
-    this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.password)
+    return this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.password)
   }
 }
