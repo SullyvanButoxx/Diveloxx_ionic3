@@ -9,7 +9,7 @@ export class ProfileProvider {
   }
 
   create(user: User) {
-    return this.afStore.doc<any>(`profile/${user.id}`).set(user.profile)
+    return this.afStore.doc<any>(`profile/${user.id}`).set(user.profile.getLite())
   }
 
 }

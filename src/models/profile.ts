@@ -8,4 +8,12 @@ export class Profile {
         this.firstname = firstname
         this.lastname = lastname
     }
+
+    getLite() {
+        return {
+            username: this.username,
+            firstname: this.firstname,
+            lastname: this.lastname
+        }
+    }
 }

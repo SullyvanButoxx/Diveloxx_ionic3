@@ -8,7 +8,7 @@ export class UserProvider {
   constructor(private afAuth: AngularFireAuth) {
   }
 
-  register(user: User) {
+  create(user: User) {
     return this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.password)
   }
 }
