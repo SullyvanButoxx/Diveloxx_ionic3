@@ -18,6 +18,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
 // Pages
 import { RegisterPage } from '../pages/register/register'
 import { UserProvider } from '../providers/user/user';
+import { ProfileProvider } from '../providers/profile/profile';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { UserProvider } from '../providers/user/user';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    UserProvider,
+    ProfileProvider
   ]
 })
 export class AppModule {}
