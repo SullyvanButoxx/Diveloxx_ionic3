@@ -1,6 +1,6 @@
 import { Profile } from "./profile";
 
-export interface User {
+export class User {
     id: string
     email: string
     password: string
