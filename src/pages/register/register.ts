@@ -6,6 +6,7 @@ import { ProfileProvider } from '../../providers/profile/profile';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Profile } from '../../models/profile';
 import { ToastCustom } from '../../components/toast-custom/toast-custom';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'page-register',
@@ -16,7 +17,7 @@ export class RegisterPage {
   private user: User
   private registerForm: FormGroup
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private userProvider: UserProvider, private profileProvider: ProfileProvider, private formBuilder: FormBuilder, private toastCustom: ToastCustom) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private userProvider: UserProvider, private profileProvider: ProfileProvider, private formBuilder: FormBuilder, private toastCustom: ToastCustom, private translate: TranslateService) {
     this.registerForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required])],
@@ -36,7 +37,7 @@ export class RegisterPage {
         this.user.id = userAuth.user.uid
         await this.profileProvider.create(this.user)
         // Display success
-        this.toastCustom.showToast('User was successfully created',3000,this.toastCustom.TYPE_SUCCESS,false)
+        this.toastCustom.showToast(await this.translate.get("user_success_create").toPromise(),3000,this.toastCustom.TYPE_SUCCESS,false)
       } catch (error) {
         // Display error
         this.toastCustom.showToast(error,10000,this.toastCustom.TYPE_ERROR,true)
@@ -44,7 +45,7 @@ export class RegisterPage {
     } else {
       // Validation fail
       // Display error
-      this.toastCustom.showToast('All inputs must be filled',10000,this.toastCustom.TYPE_ERROR,true)
+      this.toastCustom.showToast(await this.translate.get("validator_all_required").toPromise(),10000,this.toastCustom.TYPE_ERROR,true)
     }
   }
 }
