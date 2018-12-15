@@ -1,0 +1,10 @@
+{
+    "email" : "Email",
+    "password" : "Password",
+    "username" : "Username",
+    "lastname" : "Lastname",
+    "firstname" : "Firstname",
+    "register" : "Register",
+    "user_success_create" :  "The user has been successfully created",
+    "validator_all_required" : "The fields must be completed"
+}

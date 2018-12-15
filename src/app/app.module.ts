@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 // Firebase
 import { FIREBASE_CONFIG } from './app.firebase.config'
@@ -23,6 +24,10 @@ import { ProfileProvider } from '../providers/profile/profile';
 // Custom
 import { ToastCustom } from '../components/toast-custom/toast-custom'
 
+// Translation
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -35,7 +40,15 @@ import { ToastCustom } from '../components/toast-custom/toast-custom'
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -54,3 +67,6 @@ import { ToastCustom } from '../components/toast-custom/toast-custom'
   ]
 })
 export class AppModule {}
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

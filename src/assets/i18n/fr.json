@@ -1,0 +1,11 @@
+{
+    "email" : "Email",
+    "password" : "Mot de passe",
+    "username" : "Nom d'utilisateur",
+    "lastname" : "Nom",
+    "firstname" : "Prénom",
+    "register" : "S'enregistrer",
+    "user_success_create" : "L'utilisateur a été créé avec succès",
+    "validator_all_required" : "Les champs doivent être complétés"
+}
+    
