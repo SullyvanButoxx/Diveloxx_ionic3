@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 // Firebase
 import { FIREBASE_CONFIG } from './app.firebase.config'
@@ -24,7 +25,8 @@ import { ProfileProvider } from '../providers/profile/profile';
 import { ToastCustom } from '../components/toast-custom/toast-custom'
 
 // Translation
-import { TranslateModule } from '@ngx-translate/core'
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,14 @@ import { TranslateModule } from '@ngx-translate/core'
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    TranslateModule.forRoot()
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,3 +67,6 @@ import { TranslateModule } from '@ngx-translate/core'
   ]
 })
 export class AppModule {}
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
