@@ -20,6 +20,9 @@ import { RegisterPage } from '../pages/register/register'
 import { UserProvider } from '../providers/user/user';
 import { ProfileProvider } from '../providers/profile/profile';
 
+// Custom
+import { ToastCustom } from '../components/toast-custom/toast-custom'
+
 @NgModule({
   declarations: [
     MyApp,
@@ -46,7 +49,8 @@ import { ProfileProvider } from '../providers/profile/profile';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    ProfileProvider
+    ProfileProvider,
+    ToastCustom
   ]
 })
 export class AppModule {}
