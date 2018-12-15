@@ -8,6 +8,9 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { RegisterPage } from '../pages/register/register';
 
+// Translation
+import { TranslateService } from '@ngx-translate/core'
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -18,7 +21,11 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public translate: TranslateService) {
+    
+    // Default language
+    translate.setDefaultLang('en');
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation

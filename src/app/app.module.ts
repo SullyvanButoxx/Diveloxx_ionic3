@@ -23,6 +23,9 @@ import { ProfileProvider } from '../providers/profile/profile';
 // Custom
 import { ToastCustom } from '../components/toast-custom/toast-custom'
 
+// Translation
+import { TranslateModule } from '@ngx-translate/core'
+
 @NgModule({
   declarations: [
     MyApp,
@@ -35,7 +38,8 @@ import { ToastCustom } from '../components/toast-custom/toast-custom'
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    TranslateModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
